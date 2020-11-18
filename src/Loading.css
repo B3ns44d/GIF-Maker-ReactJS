@@ -1,0 +1,9 @@
+.loading{
+    font-family: 'Courier New', Courier, monospace;
+    position:absolute;
+    height: 50%;
+    bottom:0px;
+    right:25%;
+    left:50%;
+    margin-left:-150px;
+}
