@@ -21,13 +21,13 @@ function App() {
   const convertToGif = async () => {
 
     // Write the file to memory 
-    ffmpeg.FS('writeFile', 'test.mp4', await fetchFile(video));
+    ffmpeg.FS('writeFile', 'input.mp4', await fetchFile(video));
 
     // Run the FFMpeg command
-    await ffmpeg.run('-i', 'test.mp4', '-t', '2.5', '-ss', '2.0', '-f', 'gif', 'out.gif');
+    await ffmpeg.run('-i', 'input.mp4', '-t', '2.5', '-ss', '2.0', '-f', 'gif', 'output.gif');
 
     // Read the result
-    const data = ffmpeg.FS('readFile', 'out.gif');
+    const data = ffmpeg.FS('readFile', 'output.gif');
 
     // Create a URL
     const url = URL.createObjectURL(new Blob([data.buffer], { type: 'image/gif' }));
@@ -62,6 +62,11 @@ function App() {
       {gif && <div class="center">
           <button class="button" type="button"><a href={gif} target="_blank">Download GIF</a></button>
       </div>}
+      <footer>
+          <a href="https://www.linkedin.com/in/b3ns44d/" target="_blank">
+            Abdessamad Bensaad
+          </a>
+      </footer>
     </div>
   )
     :
